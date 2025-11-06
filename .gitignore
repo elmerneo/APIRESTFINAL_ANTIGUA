@@ -1,39 +1,6 @@
-# Node modules
+# Node.js
 node_modules/
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Environment variables
 .env
-.env.local
-.env.*.local
-
-# Build / cache
-dist/
-build/
-.cache/
-.tmp/
-
-# Coverage (para Jest u otras herramientas de test)
-coverage/
-
-# OS files
+package-lock.json
 .DS_Store
-Thumbs.db
-
-# IDE configs
-.vscode/
-.idea/
-*.swp
-
-# Sequelize auto migrations (si no las usas, puedes comentar esta)
-migrations/
-
-# Render build logs
-.render/
-
+*.log
