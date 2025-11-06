@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import { Sequelize } from "sequelize";
 
-dotenv.config(); // Carga las variables del archivo .env
+dotenv.config();
 
 const sequelize = new Sequelize(
   process.env.DB_NAME || "neondb",
@@ -13,7 +13,7 @@ const sequelize = new Sequelize(
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false, // Necesario para Neon
+        rejectUnauthorized: false,
       },
     },
     pool: {
@@ -22,7 +22,7 @@ const sequelize = new Sequelize(
       acquire: parseInt(process.env.DB_POOL_ACQUIRE) || 30000,
       idle: parseInt(process.env.DB_POOL_IDLE) || 10000,
     },
-    logging: false, // Opcional: desactiva logs SQL en consola
+    logging: false,
   }
 );
 

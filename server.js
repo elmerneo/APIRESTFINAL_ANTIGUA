@@ -13,12 +13,22 @@ app.use(express.json());
 // Rutas
 app.use("/api/pagos", pagoRoutes);
 
-// Sincronización con base de datos
+// Verificar conexión a BD
+app.get("/api/pagos/test-db", async (req, res) => {
+  try {
+    await sequelize.authenticate();
+    res.json({ message: "✅ Conexión a la base de datos exitosa" });
+  } catch (error) {
+    res.status(500).json({ message: "❌ Error al conectar con la BD", error });
+  }
+});
+
+// Sincronización BD
 sequelize
   .sync()
-  .then(() => console.log("Base de datos sincronizada"))
-  .catch((err) => console.error("Error al sincronizar BD:", err));
+  .then(() => console.log("✅ Base de datos sincronizada"))
+  .catch((err) => console.error("❌ Error al sincronizar BD:", err));
 
-// Servidor
+// Iniciar servidor
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Servidor ejecutándose en puerto ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Servidor corriendo en puerto ${PORT}`));

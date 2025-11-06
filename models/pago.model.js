@@ -48,4 +48,5 @@ const Pago = sequelize.define(
   }
 );
 
+
 export default Pago;
